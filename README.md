@@ -1,73 +1,103 @@
-# React + TypeScript + Vite
+# 🛒 Grocery Tracker Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **React + TypeScript Kanban-style board** to track grocery items — search, add, drag, and manage groceries across stages.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+- 🔍 **Search Food Items** — Fetch food suggestions using the FrontendEval API
+- 🧾 **Add Items to Board** — Selected items are added to the **Wishlist** column
+- 📋 **Kanban Board Layout** — Three columns: `Wishlist` → `Bought` → `Used`
+- 🔀 **Drag and Drop** — Move items across columns using HTML5 Drag and Drop API
+- ⬅️ ➡️ **Move via Buttons** — Arrow buttons to move items forward and backward
+- 🗑️ **Delete Items** — Remove items from the board instantly
+- 💾 **LocalStorage Persistence** — Board state survives page refresh
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Technology | Purpose |
+|---|---|
+| React + TypeScript | UI and type safety |
+| Vite | Build tool and dev server |
+| HTML5 Drag and Drop API | Card dragging between columns |
+| LocalStorage | State persistence |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📁 Project Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── App.tsx          # Root component and board logic
+├── main.tsx         # Entry point
+├── index.css        # Global styles
+└── assets/          # Static assets
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Installation & Setup
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**1. Clone the repository:**
+
+```bash
+git clone https://github.com/VInitSikri/grocery-tracker-board.git
+cd grocery-tracker-board
 ```
+
+**2. Install dependencies:**
+
+```bash
+npm install
+```
+
+**3. Run the development server:**
+
+```bash
+npm run dev
+```
+
+The app will be available at **http://localhost:5173**
+
+---
+
+## 🔄 How It Works
+
+1. **Search** for a food item using the search bar
+2. **Click a suggestion** to add it to the **Wishlist** column
+3. **Move items** using:
+   - Drag and drop across columns
+   - Arrow buttons (← →) to step forward or backward
+4. **Delete** any item using the trash icon
+5. **Refresh the page** — your board state is preserved via localStorage
+
+---
+
+## 🗺️ Board Flow
+
+```
+Wishlist  →  Bought  →  Used
+```
+
+---
+
+## 🔮 Future Improvements
+
+- Card reordering within the same column
+- Debounced search API calls
+- Improved drag-and-drop animations
+- Refactored `Column` and `Card` as separate components
+- Dark mode support
+
+---
+
+## 👤 Author
+
+**Vinit Sikri**
+
+---
+
+> 💡 **Note:** This project uses the FrontendEval API for food search suggestions. No API key is required.
